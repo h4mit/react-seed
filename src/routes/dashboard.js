@@ -2,7 +2,7 @@
 import Dashboard from "@material-ui/icons/Dashboard";
 // core components/views
 import DashboardPage from "../pages/dashboard/dashboard";
-import ListPage from "../pages/list/list";
+import ListPage from "../pages/dashboard/list/list";
 
 const dashboardRoutes = [
   {
@@ -13,13 +13,12 @@ const dashboardRoutes = [
     component: DashboardPage
   },
   {
-    path: "/list",
+    path: "/dashboard/list",
     sidebarName: "Table List",
     navbarName: "Table List",
     icon: "content_paste",
     component: ListPage
-  },
-  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
+  }
 ];
 
 export default dashboardRoutes;

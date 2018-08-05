@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from "@material-ui/core/Button";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -39,9 +38,6 @@ class ListPage extends Component {
         <p>
         Welcome to List. <br/>
       </p>
-        <Button variant="contained" color="primary" href="/dashboard">
-          Dashboard
-        </Button>
       <Paper className={styles.root}>
       <Table className={styles.table}>
         <TableHead>

@@ -1,16 +1,16 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // core components
-import NavBarLayout from "./partial/NavBar";
+import HeaderLayout from "./partial/Header";
 import FooterLayout from "./partial/Footer";
-import './dashboard-layout.css';
+import './master-layout.css';
 
-import dashboardRoutes from "../routes/dashboard";
+import masterRoutes from "../routes/master";
 
 
 const switchRoutes = (
   <Switch>
-    {dashboardRoutes.map((prop, key) => {
+    {masterRoutes.map((prop, key) => {
       if (prop.redirect)
         return <Redirect from={prop.path} to={prop.to} key={key} />;
       return <Route path={prop.path} exact={true} component={prop.component} key={key} />;
@@ -18,7 +18,7 @@ const switchRoutes = (
   </Switch>
 );
 
-class Dashboard extends React.Component {
+class Master extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,10 +49,15 @@ class Dashboard extends React.Component {
     window.removeEventListener("resize", this.resizeFunction);
   }
   render() {
+    const { classes, ...rest } = this.props;
     return (
       <div className="App">
         <div ref="mainPanel">
-          <NavBarLayout />
+          <HeaderLayout
+            routes={masterRoutes}
+            handleDrawerToggle={this.handleDrawerToggle}
+            {...rest}
+          />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
            <div>{switchRoutes}</div>
            <FooterLayout />
@@ -66,4 +71,4 @@ class Dashboard extends React.Component {
 //   classes: PropTypes.object.isRequired
 // };
 
-export default Dashboard;
+export default Master;
