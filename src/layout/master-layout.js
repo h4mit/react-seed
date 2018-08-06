@@ -1,16 +1,15 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-// core components
 import HeaderLayout from "./partial/Header";
 import FooterLayout from "./partial/Footer";
 import './master-layout.css';
-
 import masterRoutes from "../routes/master";
-
 import { withLocalize } from "react-localize-redux";
 import globalTranslations from "../i18n/locale.json";
 import { renderToStaticMarkup } from "react-dom/server";
 import LanguageToggle from '../i18n/switcher/lang-switcher';
+
+const LANG_KEY = 'lang';
 
 
 const switchRoutes = (
@@ -26,6 +25,7 @@ const switchRoutes = (
 class Master extends React.Component {
   constructor(props) {
     super(props);
+    const lang = (window.localStorage.getItem(LANG_KEY)) ? window.localStorage.getItem(LANG_KEY) : 'fa';
     this.props.initialize({
       languages: [
         { name: "English", code: "en" },
@@ -34,7 +34,7 @@ class Master extends React.Component {
       translation: globalTranslations,
       options: {
         renderToStaticMarkup,
-        defaultLanguage: 'fa'
+        defaultLanguage: lang
       }
     });
     this.state = {

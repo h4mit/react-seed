@@ -1,17 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-// core components
 import NavBarLayout from "./partial/NavBar";
 import FooterLayout from "./partial/Footer";
 import './dashboard-layout.css';
-
 import dashboardRoutes from "../routes/dashboard";
-
 import { withLocalize } from "react-localize-redux";
 import globalTranslations from "../i18n/locale.json";
 import { renderToStaticMarkup } from "react-dom/server";
 
-
+const LANG_KEY = 'lang';
 
 const switchRoutes = (
   <Switch>
@@ -26,6 +23,7 @@ const switchRoutes = (
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    const lang = (window.localStorage.getItem(LANG_KEY)) ? window.localStorage.getItem(LANG_KEY) : 'fa';
     this.props.initialize({
       languages: [
         { name: "English", code: "en" },
@@ -34,7 +32,7 @@ class Dashboard extends React.Component {
       translation: globalTranslations,
       options: {
         renderToStaticMarkup,
-        defaultLanguage: 'fa'
+        defaultLanguage: lang
       }
     });
     this.state = {
