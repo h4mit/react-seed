@@ -8,6 +8,7 @@ import { withLocalize } from "react-localize-redux";
 import globalTranslations from "../i18n/locale.json";
 import { renderToStaticMarkup } from "react-dom/server";
 import LanguageToggle from '../i18n/switcher/lang-switcher';
+import config from 'react-global-configuration';
 
 const LANG_KEY = 'lang';
 
@@ -41,6 +42,7 @@ class Master extends React.Component {
       mobileOpen: false
     };
     this.resizeFunction = this.resizeFunction.bind(this);
+    window.document.getElementsByTagName("title")[0].innerHTML = config.get('title');
   }
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });

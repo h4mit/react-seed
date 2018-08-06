@@ -3,13 +3,14 @@ import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
-
 import "./assets/css/style.css";
-
 import indexRoutes from "./routes/index.js";
 import { LocalizeProvider } from "react-localize-redux";
-
+import config from 'react-global-configuration';
+import configuration from './config';
 const hist = createBrowserHistory();
+ 
+config.set(configuration);
 
 ReactDOM.render(
     <LocalizeProvider>
