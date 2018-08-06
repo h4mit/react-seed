@@ -7,19 +7,22 @@ import registerServiceWorker from './registerServiceWorker';
 import "./assets/css/style.css";
 
 import indexRoutes from "./routes/index.js";
+import { LocalizeProvider } from "react-localize-redux";
 
 const hist = createBrowserHistory();
 
 ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      {indexRoutes.map((prop, key) => {
-          if (prop.redirect)
-          return <Redirect from={prop.path} to={prop.to} key={key} />;
-        return <Route path={prop.path} component={prop.component} key={key} />;
-      })}
-    </Switch>
-  </Router>,
-  document.getElementById("root")
+    <LocalizeProvider>
+        <Router history={hist}>
+            <Switch>
+                {indexRoutes.map((prop, key) => {
+                    if (prop.redirect)
+                        return <Redirect from={prop.path} to={prop.to} key={key} />;
+                    return <Route path={prop.path} component={prop.component} key={key} />;
+                })}
+            </Switch>
+        </Router>
+        </LocalizeProvider>,
+    document.getElementById("root")
 );
 registerServiceWorker();

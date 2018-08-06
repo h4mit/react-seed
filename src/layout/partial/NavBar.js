@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import LanguageToggle from '../../i18n/switcher/lang-switcher';
+import { withLocalize, Translate } from 'react-localize-redux';
 
 class NavBarLayout extends Component {
     render() {
@@ -16,11 +18,28 @@ class NavBarLayout extends Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="title" color="inherit">
-                            H4mit
+                        <Translate>
+                            {({ translate }) => (
+                                <p>{translate("APP.name")}</p>
+                            )}
+                        </Translate>
                         </Typography>
-                        <Button color="inherit" href="/dashboard">Dashboard</Button>
-                        <Button color="inherit" href="/dashboard/list">List</Button>
-                        <Button color="inherit" href="/home">Back</Button>
+                        <Button color="inherit" href="/dashboard"><Translate>
+                            {({ translate }) => (
+                                <p>{translate("APP.dashboard")}</p>
+                            )}
+                        </Translate></Button>
+                        <Button color="inherit" href="/dashboard/list"><Translate>
+                            {({ translate }) => (
+                                <p>{translate("APP.list")}</p>
+                            )}
+                        </Translate></Button>
+                        <Button color="inherit" href="/home"><Translate>
+                            {({ translate }) => (
+                                <p>{translate("APP.back")}</p>
+                            )}
+                        </Translate></Button>
+                        <LanguageToggle />
                     </Toolbar>
                 </AppBar>
             </div>
@@ -28,4 +47,4 @@ class NavBarLayout extends Component {
     }
 }
 
-export default NavBarLayout;
+export default withLocalize(NavBarLayout);

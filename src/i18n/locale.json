@@ -1,0 +1,13 @@
+{
+    "APP" : {
+        "title" :  ["Welcome to H4mit - React Seed", "حمیط بهتون خوش آمد میگه - نمونه ری اکت"],
+        "footer": [
+            "<a href='https://h4mit.github.io'>@H4mit</a>",
+            "<a href='https://h4mit.github.io'>@حمیط</a>"
+        ],
+        "dashboard": ["Dashboard", "داشبورد"],
+        "list": ["List", "لیست"],
+        "back": ["Back", "بازگشت"],
+        "name": ["H4mit", "حمیط"]
+    }
+}

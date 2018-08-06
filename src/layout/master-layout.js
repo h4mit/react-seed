@@ -7,6 +7,11 @@ import './master-layout.css';
 
 import masterRoutes from "../routes/master";
 
+import { withLocalize } from "react-localize-redux";
+import globalTranslations from "../i18n/locale.json";
+import { renderToStaticMarkup } from "react-dom/server";
+import LanguageToggle from '../i18n/switcher/lang-switcher';
+
 
 const switchRoutes = (
   <Switch>
@@ -21,6 +26,17 @@ const switchRoutes = (
 class Master extends React.Component {
   constructor(props) {
     super(props);
+    this.props.initialize({
+      languages: [
+        { name: "English", code: "en" },
+        { name: "فارسی", code: "fa" }
+      ],
+      translation: globalTranslations,
+      options: {
+        renderToStaticMarkup,
+        defaultLanguage: 'fa'
+      }
+    });
     this.state = {
       mobileOpen: false
     };
@@ -58,9 +74,10 @@ class Master extends React.Component {
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
+          <LanguageToggle />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-           <div>{switchRoutes}</div>
-           <FooterLayout />
+          <div>{switchRoutes}</div>
+          <FooterLayout />
         </div>
       </div>
     );
@@ -71,4 +88,4 @@ class Master extends React.Component {
 //   classes: PropTypes.object.isRequired
 // };
 
-export default Master;
+export default withLocalize(Master);

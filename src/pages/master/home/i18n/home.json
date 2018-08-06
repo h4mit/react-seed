@@ -1,0 +1,6 @@
+{
+    "HOME" : {
+        "wlc": ["Welcome to Home Page.", "به صفحه اصلی خوش آمدید."],
+        "today": ["Today : ${date}", "امروز : ${date}"]
+    }
+}

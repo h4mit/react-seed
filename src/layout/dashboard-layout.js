@@ -7,6 +7,11 @@ import './dashboard-layout.css';
 
 import dashboardRoutes from "../routes/dashboard";
 
+import { withLocalize } from "react-localize-redux";
+import globalTranslations from "../i18n/locale.json";
+import { renderToStaticMarkup } from "react-dom/server";
+
+
 
 const switchRoutes = (
   <Switch>
@@ -21,6 +26,17 @@ const switchRoutes = (
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.props.initialize({
+      languages: [
+        { name: "English", code: "en" },
+        { name: "فارسی", code: "fa" }
+      ],
+      translation: globalTranslations,
+      options: {
+        renderToStaticMarkup,
+        defaultLanguage: 'fa'
+      }
+    });
     this.state = {
       mobileOpen: false
     };
@@ -66,4 +82,4 @@ class Dashboard extends React.Component {
 //   classes: PropTypes.object.isRequired
 // };
 
-export default Dashboard;
+export default withLocalize(Dashboard);
