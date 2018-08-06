@@ -26,8 +26,8 @@ class Dashboard extends React.Component {
     const lang = (window.localStorage.getItem(LANG_KEY)) ? window.localStorage.getItem(LANG_KEY) : 'fa';
     this.props.initialize({
       languages: [
-        { name: "English", code: "en" },
-        { name: "فارسی", code: "fa" }
+        { name: "English", code: "en", dir: "ltr" },
+        { name: "فارسی", code: "fa", dir: "rtl" },
       ],
       translation: globalTranslations,
       options: {
