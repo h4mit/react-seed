@@ -7,6 +7,8 @@ import dashboardRoutes from "../routes/dashboard";
 import { withLocalize } from "react-localize-redux";
 import globalTranslations from "../i18n/locale.json";
 import { renderToStaticMarkup } from "react-dom/server";
+import 'ag-grid/dist/styles/ag-grid.css';
+import 'ag-grid/dist/styles/ag-theme-balham.css';
 
 const LANG_KEY = 'lang';
 
