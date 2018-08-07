@@ -23,6 +23,9 @@ class HomePage extends Component {
         <Button variant="contained" color="primary" href="/home/contact">
           Contact
           </Button> &nbsp;
+          <Button variant="contained" color="primary" href="/home/map">
+          Map
+          </Button> &nbsp;
           <Button variant="contained" color="primary" href="/dashboard">
           Dashboard
           </Button>

@@ -1,0 +1,6 @@
+{
+    "LIST" : {
+        "name": ["First name", "نام"],
+        "family": ["Family", "نام خانوادگی"]
+    }
+}

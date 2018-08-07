@@ -1,5 +1,6 @@
 import HomePage from "../pages/master/home/home";
 import ContactPage from "../pages/master/contact/contact";
+import MapPage from "../pages/master/map/map";
 
 
 const masterRoutes = [
@@ -16,6 +17,13 @@ const masterRoutes = [
     navbarName: "Contact",
     icon: "contact",
     component: ContactPage
+  },
+  {
+    path: "/home/map",
+    sidebarName: "Map",
+    navbarName: "Map",
+    icon: "map",
+    component: MapPage
   }
 ];
 
