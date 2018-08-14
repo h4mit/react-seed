@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 // import Button from "@material-ui/core/Button";
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import SimpleMap from './simple-map';
+import './map.css';
+
 
 export default class MapPage extends Component {
-    state = {
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13,
+
+    constructor(props) {
+        super(props);
+        this.map = this.map.bind(this);
+    }
+
+    map(ev) {
+        alert(ev);
     }
 
     render() {
-        const position = [this.state.lat, this.state.lng]
+        let center = [35.5853280815166, 53.39480996131898];
+        let popupText = "<b>Hello Aroin!</b><br>I am a popup.";
+        let markerLocation = [35.5853280815166, 53.39480996131898];
         return (
-            <Map center={position} zoom={this.state.zoom}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                />
-                <Marker position={position}>
-                    <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-                </Marker>
-            </Map>
+            <SimpleMap center={center} popupText={popupText} markerLocation={markerLocation} mapClick={this.map} />
         )
     }
 }
