@@ -51,14 +51,14 @@ class SimpleMap extends Component {
 
 
   init(id) {
+    const _this = this;
     if (this.state.map) return;
-    console.log(this.props.center);
     config.params.center = this.props.center || config.params.center;
     let map = L.map(id, config.params);
     L.control.zoom({ position: "bottomleft"}).addTo(map);
     L.control.scale({ position: "bottomleft"}).addTo(map);
     map.on('click', function(e) {
-        this.props.mapClick = () => [e.latlng.lat , e.latlng.lng];
+      _this.props.mapClick([e.latlng.lat , e.latlng.lng]);
     });
     const markerLocation = this.props.markerLocation || [35.5853280815166, 53.39480996131898];
     var circle = L.circle(markerLocation, {

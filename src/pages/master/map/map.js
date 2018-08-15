@@ -8,19 +8,20 @@ export default class MapPage extends Component {
 
     constructor(props) {
         super(props);
-        this.map = this.map.bind(this);
+        this.handleMapClick = this.handleMapClick.bind(this);
     }
 
-    map(ev) {
-        alert(ev);
+    handleMapClick(param) {
+        alert(param);
     }
 
     render() {
         let center = [35.5853280815166, 53.39480996131898];
         let popupText = "<b>Hello Aroin!</b><br>I am a popup.";
         let markerLocation = [35.5853280815166, 53.39480996131898];
+        let handleMapClick = this.handleMapClick;
         return (
-            <SimpleMap center={center} popupText={popupText} markerLocation={markerLocation} mapClick={this.map} />
+            <SimpleMap center={center} popupText={popupText} markerLocation={markerLocation} mapClick={handleMapClick} />
         )
     }
 }
