@@ -1,14 +1,18 @@
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'mdbreact/dist/css/mdb.css';
+import "./assets/css/style.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
-import "./assets/css/style.css";
-import indexRoutes from "./routes/index.js";
+import indexRoutes from "./routes";
 import { LocalizeProvider } from "react-localize-redux";
 import config from 'react-global-configuration';
 import configuration from './config';
 const hist = createBrowserHistory();
+
  
 config.set(configuration);
 

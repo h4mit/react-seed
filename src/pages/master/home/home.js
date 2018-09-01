@@ -1,50 +1,10 @@
 import React, { Component } from 'react';
-import Button from "@material-ui/core/Button";
 import homeTranslations from "./i18n/home.json";
 import { withLocalize, Translate } from 'react-localize-redux';
 import axios from 'axios';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Button, Row, Col, View, Mask, Fa } from 'mdbreact';
 
-const styles = theme => ({
-  card: {
-    maxWidth: '100%',
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  actions: {
-    display: 'flex',
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-    marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: -8,
-    },
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-});
+
 class HomePage extends Component {
 
   constructor(props) {
@@ -59,7 +19,6 @@ class HomePage extends Component {
   componentDidMount() {
     axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b0d1e6b7175e4217aa4414a8af3ab4df`)
       .then(res => {
-        console.log(res)
         this.setState({
           news: res.data.articles,
           count: res.data.totalResults
@@ -75,46 +34,28 @@ class HomePage extends Component {
 
 
   render() {
-    const { classes } = this.props;
-    console.log(this.state)
 
-    const imagePost = (image) => {
-      if (image) return <CardMedia
-        className={classes.media}
-        image={image}
-        title="Contemplative Reptile" />
+    const postImage = (image) => {
+      if(image) return <img className="img-fluid" aria-hidden src={image} alt="Sample image"/>;
+      else return <img className="img-fluid" aria-hidden src="image/cover.jpeg" alt="Sample image"/>;
     }
+
     const posts = this.state.news.map((post, index) =>
-      <Card className={classes.card} key={index}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
-            </Avatar>
-          }
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={post.title}
-          subheader={post.publishedAt}
-        />
-        {imagePost(post.urlToImage)}
-        <CardContent>
-          <Typography component="p">
-            {post.description}
-          </Typography>
-        </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
-        </CardActions>
-      </Card>
+     <Row key={index}>
+        <Col lg="5">
+          <View className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
+            {postImage(post.urlToImage)} 
+            <a><Mask overlay="white-slight"/></a>
+          </View>
+        </Col>
+        <Col lg="7">
+            <a className="green-text"><h6 className="font-weight-bold mb-3"><Fa icon="share" className="pr-2"></Fa>{ post.source.name }</h6></a>
+            <h3 className="font-weight-bold mb-3 p-0"><strong>{post.title}</strong></h3>
+            <p>{ post.description }</p>
+            <p>by <a><strong>{ post.author }</strong></a>, { post.publishedAt }</p>
+            <Button href={ post.url } color="success" size="md" className="waves-light ">Read more</Button>
+        </Col>
+      </Row>
     );
     return (
       <div>
@@ -125,13 +66,13 @@ class HomePage extends Component {
         <Translate>
           {({ translate }) => <h1>{translate("HOME.wlc")}</h1>}
         </Translate> <br />
-        <Button variant="contained" color="primary" href="/home/contact">
+        <Button color="primary" href="/home/contact">
           Contact
           </Button> &nbsp;
-          <Button variant="contained" color="primary" href="/home/map">
+          <Button color="primary" href="/home/map">
           Map
           </Button> &nbsp;
-          <Button variant="contained" color="primary" href="/dashboard">
+          <Button color="primary" href="/dashboard">
           Dashboard
           </Button>
         <hr />
@@ -141,4 +82,4 @@ class HomePage extends Component {
   }
 }
 
-export default withStyles(styles)(withLocalize(HomePage));
+export default withLocalize(HomePage);

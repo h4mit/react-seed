@@ -1,19 +1,5 @@
 import React, { Component } from 'react';
-import Button from "@material-ui/core/Button";
-import TextField from '@material-ui/core/TextField';
-// import { isEmail } from 'validator';
-
-// const required = (value, props) => {
-//   if (!value || (props.isCheckable && !props.checked)) {
-//     return <span className="form-error is-visible">Required</span>;
-//   }
-// };
-
-// const email = (value) => {
-//   if (!isEmail(value)) {
-//     return <span className="form-error is-visible">${value} is not a valid email.</span>;
-//   }
-// };
+import { Button, Input } from 'mdbreact';
 
 class ContactPage extends Component {
   render() {
@@ -26,28 +12,13 @@ class ContactPage extends Component {
         <form>
           <h3>Contact</h3>
           <div>
-            <TextField
-              required
-              id="required"
-              label="Email"
-              margin="normal"
-            />
+            <Input label="Example label" icon="envelope" />
           </div>
           <div>
-            <TextField
-              id="full-width"
-              label="Message"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              placeholder="Message"
-              helperText="Full width!"
-              fullWidth
-              margin="normal"
-            />
+            <Input type="textarea" label="Icon Prefix" icon="pencil" />
           </div>
           <div>
-            <Button variant="contained" color="primary">Submit</Button>
+            <Button color="primary">Submit</Button>
           </div>
         </form>
       </div>

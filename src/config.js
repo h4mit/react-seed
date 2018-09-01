@@ -1,5 +1,5 @@
 const config = {
-    title: 'React seed' 
+    title: 'React seed'
 };
- 
+
 export default config;

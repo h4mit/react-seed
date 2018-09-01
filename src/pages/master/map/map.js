@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Button from "@material-ui/core/Button";
 import SimpleMap from './simple-map';
 import './map.css';
 
