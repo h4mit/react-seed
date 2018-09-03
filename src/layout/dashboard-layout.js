@@ -4,13 +4,9 @@ import NavBarLayout from "./partial/NavBar";
 import FooterLayout from "./partial/Footer";
 import './dashboard-layout.css';
 import dashboardRoutes from "../routes/dashboard";
-import { withLocalize } from "react-localize-redux";
-import globalTranslations from "../i18n/locale.json";
-import { renderToStaticMarkup } from "react-dom/server";
 import 'ag-grid/dist/styles/ag-grid.css';
 import 'ag-grid/dist/styles/ag-theme-balham.css';
 
-const LANG_KEY = 'lang';
 
 const switchRoutes = (
   <Switch>
@@ -25,18 +21,6 @@ const switchRoutes = (
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    const lang = (window.localStorage.getItem(LANG_KEY)) ? window.localStorage.getItem(LANG_KEY) : 'fa';
-    this.props.initialize({
-      languages: [
-        { name: "English", code: "en", dir: "ltr" },
-        { name: "فارسی", code: "fa", dir: "rtl" },
-      ],
-      translation: globalTranslations,
-      options: {
-        renderToStaticMarkup,
-        defaultLanguage: lang
-      }
-    });
     this.state = {
       mobileOpen: false
     };
@@ -78,8 +62,4 @@ class Dashboard extends React.Component {
   }
 }
 
-// App.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-export default withLocalize(Dashboard);
+export default Dashboard;

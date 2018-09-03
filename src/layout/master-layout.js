@@ -4,13 +4,8 @@ import HeaderLayout from "./partial/Header";
 import FooterLayout from "./partial/Footer";
 import './master-layout.css';
 import masterRoutes from "../routes/master";
-import { withLocalize } from "react-localize-redux";
-import globalTranslations from "../i18n/locale.json";
-import { renderToStaticMarkup } from "react-dom/server";
-import LanguageToggle from '../i18n/switcher/lang-switcher';
 import config from 'react-global-configuration';
-
-const LANG_KEY = 'lang';
+import { ToastContainer } from 'mdbreact';
 
 
 const switchRoutes = (
@@ -26,18 +21,6 @@ const switchRoutes = (
 class Master extends React.Component {
   constructor(props) {
     super(props);
-    const lang = (window.localStorage.getItem(LANG_KEY)) ? window.localStorage.getItem(LANG_KEY) : 'fa';
-    this.props.initialize({
-      languages: [
-        { name: "English", code: "en", dir: "ltr" },
-        { name: "فارسی", code: "fa", dir: "rtl" }
-      ],
-      translation: globalTranslations,
-      options: {
-        renderToStaticMarkup,
-        defaultLanguage: lang
-      }
-    });
     this.state = {
       mobileOpen: false
     };
@@ -70,13 +53,19 @@ class Master extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div className="App">
+      <React.Fragment>
+      <ToastContainer
+          hideProgressBar={true}
+          newestOnTop={true}
+          autoClose={5000}
+        />
+        </React.Fragment>
         <div ref="mainPanel">
           <HeaderLayout
             routes={masterRoutes}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
-          <LanguageToggle />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
           <div>{switchRoutes}</div>
           <FooterLayout />
@@ -86,8 +75,4 @@ class Master extends React.Component {
   }
 }
 
-// App.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-export default withLocalize(Master);
+export default Master;

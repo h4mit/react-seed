@@ -1,0 +1,12 @@
+{
+    "MENU": {
+        "list": "List",
+        "home": "Home",
+        "contact": "Contact",
+        "more": "More",
+        "map": "Map",
+        "dashboard": "Dashboard",
+        "search": "Search",
+        "news": "News"
+    }
+}

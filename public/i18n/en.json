@@ -1,0 +1,27 @@
+{
+	"APP": {
+		"name": "React seed",
+		"title": "Welcome to H4mit - React Seed",
+		"ht": "@H4mit"
+	},
+	"MENU": {
+		"list": "List",
+		"home": "Home",
+		"contact": "Contact",
+		"more": "More",
+		"map": "Map",
+		"dashboard": "Dashboard",
+		"search": "Search"
+	},
+	"DASHBOARD": {
+		"title": "Dashboard"
+	},
+	"LIST": {
+		"name": "First name",
+		"family": "Family"
+	},
+	"HOME": {
+		"wlc": "Welcome to Home Page.",
+		"read_more": "Read more"
+	}
+}

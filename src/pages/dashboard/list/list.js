@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import AvatarRenderer from "../../../utils/table/renderer/avatar-renderer";
-import listTranslations from "./i18n/list.json";
-import { withLocalize } from 'react-localize-redux';
 import axios from 'axios';
+import intl from 'react-intl-universal';
 
 class ListPage extends Component {
 
   constructor(props) {
     super(props);
-    this.props.addTranslation(listTranslations);
 
     this.state = {
       columnDefs: [
-        { headerName: this.props.translate("LIST.name"), field: "name.first" },
-        { headerName: "Family", field: "name.last" },
+        { headerName: intl.get('LIST.name'), field: "name.first" },
+        { headerName: intl.get('LIST.family'), field: "name.last" },
         { headerName: "Gender", field: "gender" },
         { headerName: "Email", field: "email" },
         { headerName: "Phone", field: "phone" },
@@ -74,4 +72,4 @@ class ListPage extends Component {
   }
 }
 
-export default withLocalize(ListPage);
+export default ListPage;

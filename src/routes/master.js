@@ -1,6 +1,7 @@
 import HomePage from "../pages/master/home/home";
 import ContactPage from "../pages/master/contact/contact";
 import MapPage from "../pages/master/map/map";
+import NewsPage from "../pages/master/news/news";
 
 
 const masterRoutes = [
@@ -24,6 +25,13 @@ const masterRoutes = [
     navbarName: "Map",
     icon: "map",
     component: MapPage
+  },
+  {
+    path: "/home/news",
+    sidebarName: "news",
+    navbarName: "news",
+    icon: "news",
+    component: NewsPage
   }
 ];
 
