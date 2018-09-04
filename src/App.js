@@ -5,6 +5,8 @@ import React, { Component } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import indexRoutes from "./routes";
 import { createBrowserHistory } from "history";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 const hist = createBrowserHistory();
 
@@ -35,15 +37,27 @@ class App extends Component {
     return (
       this.state.initDone &&
       <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
+        <ToastContainer />
         {this.renderLocaleSelector()}
         <Router history={hist}>
-            <Switch>
-                {indexRoutes.map((prop, key) => {
-                    if (prop.redirect)
-                        return <Redirect from={prop.path} to={prop.to} key={key} />;
-                    return <Route path={prop.path} component={prop.component} key={key} />;
-                })}
-            </Switch>
+          <Switch>
+            {indexRoutes.map((prop, key) => {
+              if (prop.redirect)
+                return <Redirect from={prop.path} to={prop.to} key={key} />;
+              return <Route path={prop.path} component={prop.component} key={key} />;
+            })}
+          </Switch>
         </Router>
       </div>
     );
@@ -87,7 +101,7 @@ class App extends Component {
   onSelectLocale(e) {
     let lang = e.target.value;
     console.log(lang)
-    if(lang === 'fa') {
+    if (lang === 'fa') {
 
     }
     window.location.search = `?lang=${lang}`;

@@ -1,0 +1,6 @@
+{
+    "FORM": {
+        "required": "Required",
+        "min": "Must be longer than {min} characters"
+    }
+}

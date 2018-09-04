@@ -11,7 +11,12 @@
 		"more": "More",
 		"map": "Map",
 		"dashboard": "Dashboard",
-		"search": "Search"
+		"search": "Search",
+		"news": "News"
+	},
+	"FORM": {
+		"required": "Required",
+		"min": "Must be longer than {min} characters"
 	},
 	"DASHBOARD": {
 		"title": "Dashboard"
@@ -20,6 +25,7 @@
 		"name": "First name",
 		"family": "Family"
 	},
+	"CONTACT": {},
 	"HOME": {
 		"wlc": "Welcome to Home Page.",
 		"read_more": "Read more"

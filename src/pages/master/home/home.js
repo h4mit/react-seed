@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { toast } from 'mdbreact';
+import { toast } from 'react-toastify';
 import intl from 'react-intl-universal';
 import Colorrose from './Colorrose';
 
@@ -15,9 +15,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    toast.info('Welcome to React Seed ;) ', {
-      autoClose: 3000
-    });
+    toast('Welcome to React Seed ;)');
   }
 
 
