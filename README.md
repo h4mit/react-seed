@@ -51,6 +51,8 @@ import intl from 'react-intl-universal';
 {intl.get('SIMPLE').d('default message')} // with default value.
 ```
 - [BizCharts](https://github.com/alibaba/BizCharts) for show chart and graph in the dashboard.
+- [ag-grid](https://www.ag-grid.com/react-getting-started/) for show and manage data table. 
+- [react-datepicker2](https://github.com/mberneti/react-datepicker2) for use datepicker (jalaali and gregorian supported).
 - [lodash](https://github.com/lodash/lodash) A modern JavaScript utility library delivering modularity, performance, & extras.
 ```
 import _ from 'lodash'
@@ -79,7 +81,8 @@ axios.get('/user?ID=12345')
 Cookies.set('name', 'value', { expires: 7, path: '' });
 Cookies.get('name'); // => 'value'
 ```
-- [mdbootstrap](https://mdbootstrap.com/react) for ui component.
+- [react-loadable](https://github.com/jamiebuilds/react-loadable) for show loading after load component.
+- [mdbootstrap](https://mdbootstrap.com/react) for ui component. 
 ## other ui library for react 
 - [material-ui](https://material-ui.com)
 - [ant.design](https://ant.design/)

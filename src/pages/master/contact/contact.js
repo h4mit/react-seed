@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import { SubmitButton } from './../../../core/form'
 import Yup from 'yup';
 import intl from 'react-intl-universal';
+import { Input } from 'mdbreact';
 
 class ContactPage extends Component {
 
@@ -31,20 +32,21 @@ class ContactPage extends Component {
               alert(JSON.stringify(values, null, 2));
             }, 500);
           }}
-          render={({ errors, touched, values }) => (
+          render={({ errors, touched, values, handleChange, handleBlur }) => (
             <Form >
               <div className="row">
                 <div className="col-md-6">
-                <Field type="text" name="name" />
-      {touched.name && errors.name && <div>{errors.name}</div>}
+                  {values.name}
+                  <Input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name} />
+                  {touched.name && errors.name && <div>{errors.name}</div>}
                 </div>
                 <div className="col-md-6">
-                <Field type="email" name="email" />
-      {touched.email && errors.email && <div>{errors.email}</div>}          
+                  {values.email}
+                  <Input type="text" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} />
+                  {touched.email && errors.email && <div>{errors.email}</div>}
                 </div>
               </div>
 
-              
 
               <SubmitButton text="Submit" errors={errors} />
             </Form>

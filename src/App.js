@@ -7,7 +7,9 @@ import indexRoutes from "./routes";
 import { createBrowserHistory } from "history";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "./App.css";
+import './App.css';
+import $ from 'jquery';
+
 const hist = createBrowserHistory();
 
 const SUPPOER_LOCALES = [
@@ -38,7 +40,7 @@ class App extends Component {
       this.state.initDone &&
       <div>
         <ToastContainer
-          position="top-right"
+          position="bottom-left"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -48,7 +50,6 @@ class App extends Component {
           draggable
           pauseOnHover
         />
-        <ToastContainer />
         {this.renderLocaleSelector()}
         <Router history={hist}>
           <Switch>
@@ -70,6 +71,29 @@ class App extends Component {
     });
     if (!_.find(SUPPOER_LOCALES, { value: currentLocale })) {
       currentLocale = "en";
+    }
+
+    console.log(currentLocale)
+    if (currentLocale === 'fa') {
+      let $head = $("head");
+      let $headlinklast = $head.find("style:last");
+      let linkElement = "<link rel='stylesheet' type='text/css' href='assets/css/rtl.css' />";
+      if ($headlinklast.length) {
+        $headlinklast.after(linkElement);
+      }
+      else {
+        $head.append(linkElement);
+      }
+      let $body = $("body");
+      let $bodylinklast = $body.find("script[type='text/javascript']:last");
+      let scriptElement = "<script type='text/javascript' href='assets/js/rtl.js' />";
+      if ($bodylinklast.length) {
+        $bodylinklast.after(scriptElement);
+      }
+      else {
+        $body.append(scriptElement);
+      }
+      console.log('append');
     }
 
     http
@@ -100,10 +124,6 @@ class App extends Component {
 
   onSelectLocale(e) {
     let lang = e.target.value;
-    console.log(lang)
-    if (lang === 'fa') {
-
-    }
     window.location.search = `?lang=${lang}`;
   }
 }

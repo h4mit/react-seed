@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Input } from 'mdbreact';
+import React, { Component } from 'react';
+// import Input from '@material-ui/core/Input';
 // import { toast } from 'react-toastify';
 // import _ from 'lodash';
 import './form.css';
@@ -13,29 +13,47 @@ import './form.css';
     border-bottom: 1px solid #dc3545;
     */
 
-export const HandleError = (label, erorrs) => {
-    console.log('error',erorrs, label);
-    // if (!_.isEmpty(erorrs))
-    //     toast.error(label + ' : ' + erorrs);
+export class AInput extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: this.props.value
+        };
+        this.handleChangeValue = this.handleChangeValue.bind(this);
+    }
+
+    handleChangeValue(e) { 
+        this.setState({ value: e.target.value });
+        this.props.onChange(e);    
+    }
+
+    componentDidMount() {
+        this.setState({ value: this.props.value })
+        // this.props.value = this.state.value;
+    }
+
+    HandleError = (label, erorrs) => {
+        console.log('error', erorrs, label);
+        // if (!_.isEmpty(erorrs))
+        //     toast.error(label + ' : ' + erorrs);
+    }
+
+    HandleTouched = (touched) => {
+        console.log('touched', touched);
+    }
+
+
+    render() {
+        // const  value  = this.props.value;
+        // this.state.s
+        return (
+            <div>
+                <input name={this.props.label} id={'a-input-' + this.props.label} type={this.props.type} icon={this.props.icon} value={this.state.value}
+                    onChange={this.handleChangeValue} />
+                {/* {this.HandleError(this.props.value, this.props.error)}{this.HandleTouched(this.props.touched)} */}
+                {this.props.error && this.props.touched && <div className="field-error">{this.props.error}</div>}
+            </div>
+        );
+    }
 }
 
-export const HandleTouched = (touched) => {
-    console.log('touched',touched);
-}
-export const AInput = ({
-    label,
-    type,
-    error,
-    value,
-    onChange,
-    onBlur,
-    icon,
-    touched,
-    disabled
-}) => (
-        <div>
-            <Input name={label} id={'a-input-' + label} label={label} type={type} value={value} icon={icon} onChange={onChange} onBlur={onBlur} />
-            {HandleError(value ,error)}{HandleTouched(touched)}    
-            {error && touched && <div className="field-error">{error}</div>}
-        </div>
-    );
