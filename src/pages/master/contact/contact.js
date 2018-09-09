@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import { SubmitButton } from './../../../core/form'
 import Yup from 'yup';
 import intl from 'react-intl-universal';
-import { Input } from 'mdbreact';
+import Input from '@material-ui/core/Input';
 
 class ContactPage extends Component {
 
@@ -37,12 +37,12 @@ class ContactPage extends Component {
               <div className="row">
                 <div className="col-md-6">
                   {values.name}
-                  <Input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name} />
+                  <Input type="text" name="name" label="Name" onChange={handleChange} onBlur={handleBlur} value={values.name} />
                   {touched.name && errors.name && <div>{errors.name}</div>}
                 </div>
                 <div className="col-md-6">
                   {values.email}
-                  <Input type="text" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} />
+                  <Input type="text" label="Email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} />
                   {touched.email && errors.email && <div>{errors.email}</div>}
                 </div>
               </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import NavBarLayout from "./partial/NavBar";
-import FooterLayout from "./partial/Footer";
+import {FooterLayout, NavBarMenu} from "./partial";
 import './dashboard-layout.css';
 import dashboardRoutes from "../routes/dashboard";
 import 'ag-grid/dist/styles/ag-grid.css';
@@ -52,10 +51,10 @@ class Dashboard extends React.Component {
     return (
       <div className="App">
         <div ref="mainPanel">
-          <NavBarLayout />
+          <NavBarMenu />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
            <div>{switchRoutes}</div>
-           <FooterLayout />
+           <FooterLayout color="green" />
         </div>
       </div>
     );

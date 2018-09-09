@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from 'mdbreact';
+import Button from '@material-ui/core/Button';
 import _ from 'lodash';
 
 
 export const TYPES = (erorrs) => {
-    if(!_.isEmpty(erorrs)) return 'danger';
+    if(!_.isEmpty(erorrs)) return 'secondary';
     else return 'primary';
 }
 export const SubmitButton = ({ 
@@ -17,6 +17,7 @@ export const SubmitButton = ({
     type="submit"
     disabled={disabled}
     onClick={onClick}
+    variant="contained"
     color={TYPES(errors)}
   >
     {text}

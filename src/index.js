@@ -1,11 +1,8 @@
-import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import config from 'react-global-configuration';
-import configuration from './config';
+import USER from './core/user/user-inforamtion';
 import Loadable from 'react-loadable';
 import Loading from './utils/loading/loading';
 
@@ -14,7 +11,8 @@ const LoadableComponent = Loadable({
   loading: Loading,
 });
 
-config.set(configuration);
+let user = new USER();
+user.GET();
 
 ReactDOM.render(<LoadableComponent/>, document.getElementById('root'));
 registerServiceWorker();

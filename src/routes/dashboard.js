@@ -1,6 +1,3 @@
-// @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
-// core components/views
 import DashboardPage from "../pages/dashboard/dashboard";
 import ListPage from "../pages/dashboard/list/list";
 
@@ -9,7 +6,7 @@ const dashboardRoutes = [
     path: "/dashboard",
     sidebarName: "Dashboard",
     navbarName: "Material Dashboard",
-    icon: Dashboard,
+    icon: "Dashboard",
     component: DashboardPage
   },
   {

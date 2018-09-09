@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import Sidebar from "../../layout/partial/Sidebar";
-
+import { BreadCrumb } from "../../layout/partial";
 
 class DashboardPage extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      pageName: 'Dashboard'
+    };
+  }
+
   render() {
-   
 
     return (
       <div>
-        <Sidebar title={'Dashboard'} >          
-        
-        </Sidebar>
+        <BreadCrumb pageName={this.state.pageName} />
       </div>
     );
   }

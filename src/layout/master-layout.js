@@ -1,11 +1,9 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import HeaderLayout from "./partial/Header";
-import FooterLayout from "./partial/Footer";
+import {FooterLayout, HeaderLayout} from "./partial";
 import './master-layout.css';
 import masterRoutes from "../routes/master";
 import config from 'react-global-configuration';
-import { ToastContainer } from 'mdbreact';
 
 
 const switchRoutes = (
@@ -25,7 +23,8 @@ class Master extends React.Component {
       mobileOpen: false
     };
     this.resizeFunction = this.resizeFunction.bind(this);
-    window.document.getElementsByTagName("title")[0].innerHTML = config.get('title');
+    window.document.getElementsByTagName("title")[0].innerHTML = config.get('config')['title'];
+    console.log(config.get('user'));
   }
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
@@ -53,13 +52,6 @@ class Master extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div className="App">
-      <React.Fragment>
-      <ToastContainer
-          hideProgressBar={true}
-          newestOnTop={true}
-          autoClose={5000}
-        />
-        </React.Fragment>
         <div ref="mainPanel">
           <HeaderLayout
             routes={masterRoutes}

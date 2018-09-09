@@ -82,9 +82,9 @@ Cookies.set('name', 'value', { expires: 7, path: '' });
 Cookies.get('name'); // => 'value'
 ```
 - [react-loadable](https://github.com/jamiebuilds/react-loadable) for show loading after load component.
-- [mdbootstrap](https://mdbootstrap.com/react) for ui component. 
+- [material-ui](https://material-ui.com) for ui component. 
 ## other ui library for react 
-- [material-ui](https://material-ui.com)
+- [mdbootstrap](https://mdbootstrap.com/react)
 - [ant.design](https://ant.design/)
 - [evergreen](https://github.com/segmentio/evergreen)
 
