@@ -1,5 +1,4 @@
 import intl from "react-intl-universal";
-import _ from "lodash";
 import http from "axios";
 import React, { Component } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
@@ -9,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import $ from 'jquery';
+import Cookies from 'js-cookie';
 
 const hist = createBrowserHistory();
 
@@ -69,15 +69,20 @@ class App extends Component {
       urlLocaleKey: "lang",
       cookieLocaleKey: "lang"
     });
-    if (!_.find(SUPPOER_LOCALES, { value: currentLocale })) {
-      currentLocale = "en";
+    currentLocale = Cookies.get('lang');
+    if (!currentLocale) {
+      Cookies.set('lang', 'fa');
+      currentLocale = 'fa';
     }
 
+    $("html").attr("lang", currentLocale);
     console.log(currentLocale)
     if (currentLocale === 'fa') {
+      let $url = window.location.origin;
+      $("body").attr("dir", "rtl");
       let $head = $("head");
       let $headlinklast = $head.find("style:last");
-      let linkElement = "<link rel='stylesheet' type='text/css' href='assets/css/rtl.css' />";
+      let linkElement = "<link rel='stylesheet' type='text/css' href='"+$url+"/assets/css/rtl.css' /><link rel='stylesheet' type='text/css' href='"+$url+"/style-rtl.css' />";
       if ($headlinklast.length) {
         $headlinklast.after(linkElement);
       }
@@ -94,6 +99,8 @@ class App extends Component {
         $body.append(scriptElement);
       }
       console.log('append');
+    } else {
+      $("body").attr("dir", "ltr");
     }
 
     http
@@ -124,7 +131,8 @@ class App extends Component {
 
   onSelectLocale(e) {
     let lang = e.target.value;
-    window.location.search = `?lang=${lang}`;
+    Cookies.set('lang', lang);
+    this.loadLocales();
   }
 }
 

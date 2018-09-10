@@ -5,7 +5,7 @@ export class BreadCrumb extends Component {
     render() {
         let pageName = this.props.pageName;
         return (
-            <b>{pageName}</b>
-        );
+            <span className="fa fa-user-circle"> {pageName}</span>
+            );
+        }
     }
-}

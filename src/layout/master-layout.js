@@ -23,6 +23,7 @@ class Master extends React.Component {
       mobileOpen: false
     };
     this.resizeFunction = this.resizeFunction.bind(this);
+    if(config.get('config'))
     window.document.getElementsByTagName("title")[0].innerHTML = config.get('config')['title'];
     console.log(config.get('user'));
   }

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import ReactSVG from 'react-svg'
+import './loading.css';
 
 
 
 class Loading extends Component {
 
     render() {
-
-
         return (
-            <ReactSVG src="./loading.svg" />
+            <div className="load-icon center">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         );
     }
 }

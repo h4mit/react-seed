@@ -51,9 +51,9 @@ class Dashboard extends React.Component {
     return (
       <div className="App">
         <div ref="mainPanel">
-          <NavBarMenu />
-          {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-           <div>{switchRoutes}</div>
+          <NavBarMenu >
+           {switchRoutes}
+           </NavBarMenu>
            <FooterLayout color="green" />
         </div>
       </div>

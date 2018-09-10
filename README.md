@@ -83,6 +83,7 @@ Cookies.get('name'); // => 'value'
 ```
 - [react-loadable](https://github.com/jamiebuilds/react-loadable) for show loading after load component.
 - [material-ui](https://material-ui.com) for ui component. 
+- [vazir-font](https://github.com/rastikerdar/vazir-font) for persian font.
 ## other ui library for react 
 - [mdbootstrap](https://mdbootstrap.com/react)
 - [ant.design](https://ant.design/)
